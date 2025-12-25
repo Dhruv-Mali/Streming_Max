@@ -245,4 +245,5 @@ docker-compose up -d --build
 ISC
 
 ## 👥 Author
+Dhruv Mali
 Jay Bhogayata
