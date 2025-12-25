@@ -7,8 +7,11 @@ import { Toast } from "@/components/Toast";
 import { Toaster } from "@/components/ui/toaster";
 import api from "@/utils/api";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function Page() {
+  const router = useRouter();
+
   const onSubmit = async (data: SignupFormData) => {
     try {
       const response = await api.post("/auth/signup", data);
@@ -16,17 +19,21 @@ export default function Page() {
         Toast({
           variant: "default",
           title: "Success",
-          description: "Account created successfully.",
+          description: "Account created successfully. Please sign in.",
         });
+        setTimeout(() => {
+          router.push("/signin");
+        }, 1500);
       } else {
         throw new Error(response.data.message);
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
+      const errorMessage = error?.response?.data?.message || "An error occurred. Please try again.";
       Toast({
         variant: "destructive",
         title: "Error",
-        description: "An error occurred. Please try again.",
+        description: errorMessage,
       });
     }
   };

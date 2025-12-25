@@ -11,6 +11,8 @@ export const cookieOptions = {
 export const simpleSignup = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
 
+  console.log('Signup request received:', { name, email });
+
   if (!name || !email || !password) {
     throw new CustomError("please add all required fields", 400);
   }
@@ -29,6 +31,8 @@ export const simpleSignup = asyncHandler(async (req, res) => {
   });
 
   user.password = undefined;
+
+  console.log('User created successfully:', user.email);
 
   res.status(201).json({
     success: true,

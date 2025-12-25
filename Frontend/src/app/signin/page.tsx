@@ -25,22 +25,22 @@ export default function Page() {
   };
 
   return (
-    <>
-      <div className="flex justify-center items-center my-auto px-3">
-        <Toaster />
+    <div className="min-h-screen flex items-center justify-center px-4 bg-gradient-to-br from-purple-50 via-white to-violet-50 dark:from-gray-950 dark:via-purple-950/20 dark:to-gray-950">
+      <Toaster />
+      <div className="w-full max-w-md signin-fade-up">
         <CardComponent
-          title="Signin"
-          description="Enter your email below to login to your account"
+          title="Welcome Back"
+          description="Sign in to continue your streaming journey"
         >
           <SigninForm onSubmit={onSubmit} loading={loading} />
-          <div className="mt-4 text-center text-sm">
-            Don&apos;t have an account?{" "}
-            <Link href="signup" className="underline">
+          <div className="mt-6 text-center text-sm">
+            <span className="text-muted-foreground">Don&apos;t have an account?</span>{" "}
+            <Link href="signup" className="font-semibold text-purple-600 hover:text-purple-700 underline underline-offset-4">
               Sign up
             </Link>
           </div>
         </CardComponent>
       </div>
-    </>
+    </div>
   );
 }
