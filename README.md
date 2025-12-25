@@ -1,14 +1,45 @@
-# Stremify - Video Streaming Platform
+# Stremify - Premium Video Streaming Platform 🎬
 
-A full-stack video streaming platform built with Next.js (Frontend) and Node.js/Express (Backend).
+A modern, full-stack video streaming platform with a beautiful UI, built with Next.js 14 and Node.js/Express.
+
+![Next.js](https://img.shields.io/badge/Next.js-14-black?logo=next.js)
+![React](https://img.shields.io/badge/React-18-blue?logo=react)
+![Node.js](https://img.shields.io/badge/Node.js-18+-green?logo=node.js)
+![MongoDB](https://img.shields.io/badge/MongoDB-7.0-green?logo=mongodb)
+![AWS](https://img.shields.io/badge/AWS-S3%20%7C%20SES-orange?logo=amazon-aws)
+
+## ✨ Features
+
+- 🎨 **Modern UI/UX** - Beautiful gradient designs, animations, and glassmorphism effects
+- 🎬 **Movie Browsing** - Interactive movie cards with hover effects and play buttons
+- 🔐 **Authentication** - Secure JWT-based auth with bcrypt password hashing
+- 💳 **Subscription System** - Manage user subscriptions and access control
+- 📧 **Email Notifications** - AWS SES integration for transactional emails
+- ☁️ **Cloud Storage** - AWS S3 for scalable media storage
+- 📱 **Fully Responsive** - Works seamlessly on all devices
+- 🌙 **Dark Mode** - Built-in theme support
 
 ## 🏗️ Project Structure
 
 ```
 Streming_max/
-├── stremify-FE-main/          # Next.js Frontend
+├── Frontend/                   # Next.js 14 Frontend
+│   ├── src/
+│   │   ├── app/               # App router pages
+│   │   ├── components/        # Reusable components
+│   │   ├── stores/            # Zustand state management
+│   │   └── utils/             # Utility functions
+│   └── package.json
 ├── video_straming_system-main/ # Node.js Backend API
-└── docker-compose.yml          # Full-stack Docker setup
+│   ├── src/
+│   │   ├── controllers/       # Route controllers
+│   │   ├── models/            # MongoDB models
+│   │   ├── routes/            # API routes
+│   │   └── middleware/        # Auth & validation
+│   └── package.json
+├── AWS_SETUP_GUIDE.md         # Complete AWS integration guide
+├── AWS_QUICK_START.md         # 15-minute AWS setup
+└── README.md
 ```
 
 ## 🚀 Quick Start (Development)
@@ -40,7 +71,7 @@ Backend runs on: `http://localhost:3001`
 
 ### 3. Setup Frontend
 ```bash
-cd stremify-FE-main
+cd Frontend
 npm install
 cp .env.example .env.local
 # Edit .env.local if needed
@@ -49,29 +80,35 @@ npm run dev
 
 Frontend runs on: `http://localhost:3000`
 
-## 🐳 Docker Deployment (Production)
+### 4. Access the Application
+- **Frontend**: http://localhost:3000
+- **Backend API**: http://localhost:3001
+- **MongoDB**: mongodb://localhost:27017
 
-### Using Docker Compose (Recommended)
+## 🎨 UI/UX Highlights
 
-```bash
-# From project root
-docker-compose up -d
-```
+### Homepage
+- Animated gradient hero section
+- Smooth fade-in animations
+- Feature cards with hover effects
+- Call-to-action buttons with gradients
 
-This will start:
-- MongoDB on port 27017
-- Backend API on port 3001
-- Frontend on port 3000
+### Movie Browsing
+- Interactive movie cards
+- Play button overlay on hover
+- Smooth scale animations
+- Responsive grid layout (2-6 columns)
 
-### Stop services
-```bash
-docker-compose down
-```
+### Navigation
+- Glassmorphism navbar with backdrop blur
+- Gradient logo and branding
+- Smooth transitions
 
-### View logs
-```bash
-docker-compose logs -f
-```
+### Forms
+- Modern input styling with focus states
+- Loading spinners
+- Error validation with icons
+- Gradient submit buttons
 
 ## 📋 API Endpoints
 
@@ -137,27 +174,36 @@ This project supports AWS services for production:
 - Scalable and reliable
 - Toggle with `USE_S3=true`
 
-**Quick Setup**: See [AWS_QUICK_SETUP.md](AWS_QUICK_SETUP.md)
-**Full Guide**: See [AWS_INTEGRATION_GUIDE.md](AWS_INTEGRATION_GUIDE.md)
+**Quick Setup**: See [AWS_QUICK_START.md](AWS_QUICK_START.md) - 15 minutes
+**Full Guide**: See [AWS_SETUP_GUIDE.md](AWS_SETUP_GUIDE.md) - Complete documentation
 
 ## 📦 Tech Stack
 
 ### Frontend
-- Next.js 14
-- React 18
-- TypeScript
-- Tailwind CSS
-- Zustand (State Management)
-- Axios
-- React Hook Form + Zod
+- **Framework**: Next.js 14 (App Router)
+- **UI Library**: React 18
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS + Custom Animations
+- **State Management**: Zustand
+- **HTTP Client**: Axios
+- **Forms**: React Hook Form + Zod validation
+- **Icons**: Lucide React
+- **Components**: Radix UI + shadcn/ui
 
 ### Backend
-- Node.js
-- Express.js
-- MongoDB + Mongoose
-- JWT Authentication
-- Multer (File Upload)
-- bcrypt
+- **Runtime**: Node.js 18+
+- **Framework**: Express.js
+- **Database**: MongoDB 7.0 + Mongoose ODM
+- **Authentication**: JWT + bcrypt
+- **File Upload**: Multer
+- **Email**: AWS SES SDK
+- **Storage**: AWS S3 SDK
+- **Validation**: Custom middleware
+
+### Cloud Services (AWS)
+- **S3**: Media storage (images, videos)
+- **SES**: Transactional emails
+- **CloudFront**: CDN (optional)
 
 ## 🔐 Security Features
 - JWT-based authentication
@@ -217,33 +263,126 @@ docker-compose up -d --build
 - Configure AWS SES for email (optional)
 - Use reverse proxy (Nginx) for SSL/TLS
 
-## 📝 Missing Features Added
+## 🎯 Key Features Implemented
 
-✅ Movie Management API (CRUD operations)
-✅ Subscription Management API
-✅ File Upload Support (Multer)
-✅ Environment Variable Configuration
-✅ Docker Support
-✅ Production-Ready Setup
-✅ Comprehensive Documentation
+### Frontend
+✅ Modern, animated homepage with hero section
+✅ Interactive movie browsing with hover effects
+✅ Glassmorphism navbar with gradient branding
+✅ Enhanced authentication forms (signin/signup)
+✅ Responsive design (mobile, tablet, desktop)
+✅ Dark mode support
+✅ Custom animations (fade-in, float, glow)
+✅ Loading states and error handling
+
+### Backend
+✅ RESTful API with Express.js
+✅ JWT authentication & authorization
+✅ Movie management (CRUD operations)
+✅ Subscription system
+✅ File upload with Multer
+✅ AWS S3 integration for cloud storage
+✅ AWS SES for email notifications
+✅ MongoDB database with Mongoose
+✅ CORS & security middleware
+
+### Documentation
+✅ Comprehensive README
+✅ AWS setup guides (quick & detailed)
+✅ API documentation
+✅ Environment configuration examples
 
 ## 🐛 Troubleshooting
 
 ### MongoDB Connection Error
-- Ensure MongoDB is running
+- Ensure MongoDB is running: `mongod` or Docker container
 - Check MONGODB_URI in .env
+- Verify port 27017 is not in use
 
 ### CORS Error
-- Verify FRONTEND_URL in backend .env
+- Verify FRONTEND_URL in backend .env matches frontend URL
 - Check NEXT_PUBLIC_API_URL in frontend .env.local
+- Ensure backend is running on correct port
 
 ### File Upload Error
-- Ensure `uploads/` directory exists
-- Check file permissions
+- Ensure `uploads/` directory exists in backend
+- Check file permissions (read/write)
+- Verify Multer configuration
+
+### Next.js Build Error
+- Delete `.next` folder: `rmdir /s /q .next` (Windows) or `rm -rf .next` (Mac/Linux)
+- Clear node_modules and reinstall: `npm install`
+- Check for styled-jsx usage (use CSS instead)
+
+### AWS Integration Issues
+- Verify AWS credentials in .env
+- Check IAM user has correct permissions
+- Ensure S3 bucket exists and is accessible
+- Verify SES email is verified (sandbox mode)
+
+See [FIX_GUIDE.md](FIX_GUIDE.md) for more solutions.
+
+## 📸 Screenshots
+
+### Homepage
+- Modern hero section with gradient background
+- Animated feature cards
+- Call-to-action buttons
+
+### Movie Browsing
+- Grid layout with hover effects
+- Play button overlays
+- Responsive design
+
+### Authentication
+- Clean, modern forms
+- Gradient backgrounds
+- Loading states
+
+## 🚀 Future Enhancements
+
+- [ ] Video player integration
+- [ ] User watchlist and favorites
+- [ ] Movie recommendations
+- [ ] Search and filtering
+- [ ] User reviews and ratings
+- [ ] Admin dashboard
+- [ ] Payment gateway integration
+- [ ] Social sharing features
+
+## 📚 Documentation
+
+- [AWS Setup Guide](AWS_SETUP_GUIDE.md) - Complete AWS integration
+- [AWS Quick Start](AWS_QUICK_START.md) - 15-minute setup
+- [Fix Guide](FIX_GUIDE.md) - Common issues and solutions
+- [Project Structure](STRUCTURE.md) - Detailed file structure
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 ## 📄 License
-ISC
 
-## 👥 Author
-Dhruv Mali
-Jay Bhogayata
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 👥 Authors
+
+- **Dhruv Mali** - [@Dhruv-Mali](https://github.com/Dhruv-Mali)
+- **Jay Bhogayata** - Backend Development
+
+## 🙏 Acknowledgments
+
+- Next.js team for the amazing framework
+- shadcn/ui for beautiful components
+- AWS for cloud services
+- MongoDB for the database
+
+---
+
+⭐ Star this repo if you find it helpful!
