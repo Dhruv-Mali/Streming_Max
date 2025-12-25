@@ -373,8 +373,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👥 Authors
 
-- **Dhruv Mali** - [@Dhruv-Mali](https://github.com/Dhruv-Mali)
-- **Jay Bhogayata** - Backend Development
+- **Dhruv Mali** - Cloud Backend Development 
+- **Jay Bhogayata** - Full Stack Development
 
 ## 🙏 Acknowledgments
 
