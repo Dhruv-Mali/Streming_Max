@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "./ui/button";
-import { User2 } from "lucide-react";
+import { User2, Loader2 } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,15 +11,24 @@ import {
 import Link from "next/link";
 import { useAuthStore } from "@/components/AuthProvider";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export function UserToolTip() {
   const signOut = useAuthStore((state) => state.signOut);
   const router = useRouter();
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
 
   const handleSignOut = async () => {
-    await signOut();
-    router.push("/");
-    router.refresh();
+    setIsLoggingOut(true);
+    try {
+      await signOut();
+      router.push("/");
+      router.refresh();
+    } catch (error) {
+      console.error("Logout error:", error);
+    } finally {
+      setIsLoggingOut(false);
+    }
   };
 
   return (
@@ -41,8 +50,19 @@ export function UserToolTip() {
         </Link>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <Button className="w-full" onClick={handleSignOut}>
-            Logout
+          <Button 
+            className="w-full" 
+            onClick={handleSignOut}
+            disabled={isLoggingOut}
+          >
+            {isLoggingOut ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Logging out...
+              </>
+            ) : (
+              "Logout"
+            )}
           </Button>
         </DropdownMenuItem>
       </DropdownMenuContent>

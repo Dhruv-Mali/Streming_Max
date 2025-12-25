@@ -64,13 +64,17 @@ const createAuthSlice: StateCreator<AuthState> = (set) => ({
     try {
       const response = await api.post("/auth/logout");
       if (response.status === 200) {
+        // Clear session storage
+        sessionStorage.removeItem('auth-storage');
         set({ isLoggedIn: false, user: null, loading: false });
       } else {
         throw new Error(response.data.message);
       }
     } catch (error: any) {
       console.error("Error signing out:", error);
-      set({ loading: false });
+      // Clear session storage even on error
+      sessionStorage.removeItem('auth-storage');
+      set({ isLoggedIn: false, user: null, loading: false });
     }
   },
 });
