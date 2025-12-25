@@ -49,6 +49,30 @@ Streming_max/
 - MongoDB (running locally or Docker)
 - npm/yarn/pnpm
 
+### Option 1: Docker (Recommended) 🐳
+
+```bash
+# Clone repository
+git clone https://github.com/Dhruv-Mali/Streming_Max.git
+cd Streming_Max
+
+# Configure environment
+cp .env.docker .env
+# Edit .env with your values
+
+# Start all services
+docker-compose up -d
+```
+
+Access:
+- **Frontend**: http://localhost:3000
+- **Backend API**: http://localhost:3001
+- **MongoDB**: mongodb://localhost:27017
+
+**See [DOCKER_GUIDE.md](DOCKER_GUIDE.md) for complete Docker documentation**
+
+### Option 2: Manual Setup
+
 ### 1. Start MongoDB
 ```bash
 # Using Docker
@@ -233,6 +257,20 @@ npm run lint   # Lint code
 
 ## 🚢 Production Deployment
 
+### Docker Deployment (Recommended) 🐳
+
+```bash
+# Build and run with docker-compose
+docker-compose up -d --build
+```
+
+This will start:
+- MongoDB on port 27017
+- Backend API on port 3001
+- Frontend on port 3000
+
+**Complete Guide**: See [DOCKER_GUIDE.md](DOCKER_GUIDE.md)
+
 ### Manual Deployment
 
 1. **Build Backend**
@@ -243,16 +281,28 @@ npm install --production
 
 2. **Build Frontend**
 ```bash
-cd stremify-FE-main
+cd Frontend
 npm install
 npm run build
 npm start
 ```
 
-### Docker Deployment
+### Docker Commands
 
 ```bash
-# Build and run with docker-compose
+# Start services
+docker-compose up -d
+
+# Stop services
+docker-compose down
+
+# View logs
+docker-compose logs -f
+
+# Restart services
+docker-compose restart
+
+# Rebuild images
 docker-compose up -d --build
 ```
 
@@ -352,6 +402,7 @@ See [FIX_GUIDE.md](FIX_GUIDE.md) for more solutions.
 
 ## 📚 Documentation
 
+- [Docker Guide](DOCKER_GUIDE.md) - Complete Docker deployment guide
 - [AWS Setup Guide](AWS_SETUP_GUIDE.md) - Complete AWS integration
 - [AWS Quick Start](AWS_QUICK_START.md) - 15-minute setup
 - [Fix Guide](FIX_GUIDE.md) - Common issues and solutions
