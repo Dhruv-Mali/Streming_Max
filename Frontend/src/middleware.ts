@@ -9,7 +9,7 @@ export async function middleware(request: NextRequest) {
     if (!user) {
       return NextResponse.redirect(new URL("/signin", request.url));
     }
-    if (user.role !== "admin") {
+    if (user.role !== "ADMIN") {
       return NextResponse.redirect(new URL("/profile", request.url));
     }
   }
